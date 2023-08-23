@@ -1,6 +1,6 @@
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="Marcraphael.png" alt="banner image" width="140"  height="auto" />
+  <img src="Marcraphael.png" alt="banner image" width="auto"  height="auto" />
   <br/>
 </div>
 
