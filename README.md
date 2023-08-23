@@ -1,6 +1,6 @@
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
+  <img src="Marcraphael.png" alt="banner image" width="140"  height="auto" />
   <br/>
 </div>
 
@@ -151,6 +151,6 @@ I would like to thank Microverse for the project.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
