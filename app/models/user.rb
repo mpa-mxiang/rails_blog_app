@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # is defining the associations for the `User` model.
   has_many :posts, foreign_key: :author_id
   has_many :comments, foreign_key: :author_id
-  has_many :likes
+  has_many :likes, foreign_key: :author_id
 
   def recent_posts(limit = 3)
     # retrieve the most recent posts for a user.
