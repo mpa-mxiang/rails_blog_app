@@ -9,10 +9,18 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :likes
 
+  after_save :update_user_posts_counter
+
+  private
+  
   def update_user_posts_counter
     # updating the `posts_counter` attribute of
     # the associated `author` object with the count of the `posts` associated with that `author`.
-    author.update(posts_counter: author.posts.count)
+    author.update(PostCounter: author.posts.count)
+
+    # `author.increment!(:posts_counter)` is incrementing the value of the `posts_counter` attribute
+    # of the associated `author` object by 1.
+    # author.increment!(:PostsCounter)
   end
 
   def recent_comments
