@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   # an instance of the `User` model.
   belongs_to :author, class_name: 'User'
 
-
   # defining associations between the `Post`
   # model and the `Comment` and `Like` models, respectively.
   has_many :comments
