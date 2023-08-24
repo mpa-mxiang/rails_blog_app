@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   after_save :update_user_posts_counter
 
   private
-  
+
   def update_user_posts_counter
     # updating the `posts_counter` attribute of
     # the associated `author` object with the count of the `posts` associated with that `author`.
