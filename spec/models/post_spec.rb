@@ -11,7 +11,10 @@ RSpec.describe Post, type: :model do
   it 'Title must be less than 250 chars' do
     author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
     subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
-    subject.Title = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus neque quis nulla facilisis consequat. Nulla urna enim, lacinia quis odio at, venenatis tempus ante. In venenatis eros a magna aliquam, vitae placerat lectus lobortis. Donec auctor efficitur justo vitae iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In euismod libero vel lorem vulputate, et auctor metus placerat. Donec quis sapien ipsum. Cras vel massa bibendum, commodo libero vel, pharetra quam. Ut viverra hendrerit commodo. Aliquam dapibus et est id porta. Sed in ligula dui. Quisque at nisl non odio pretium hendrerit et sed nisl. Duis dolor quam, malesuada non eros ac, pellentesque elementum ex. Sed dictum sem arcu, a ornare arcu venenatis in. Nam vehicula mauris ut egestas tincidunt.'
+    subject.Title = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus neque quis nulla facilisis
+    consequat. Nulla urna enim, lacinia quis odio at, venenatis tempus ante. lectus lobortis. Donec auctor
+    efficitur justo vitae iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+    lectus lobortis. Donec auctor efficitur justo vitae iaculis'
     expect(subject).to_not be_valid
   end
 
