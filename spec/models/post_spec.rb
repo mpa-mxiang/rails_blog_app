@@ -25,10 +25,10 @@ RSpec.describe Post, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'nil should be allowed' do
+  it 'zero value should be allowed' do
     author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
     subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
-    subject.LikesCounter = nil
+    subject.LikesCounter = 0
     expect(subject).to be_valid
   end
 
@@ -39,10 +39,10 @@ RSpec.describe Post, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'nil should be allowed' do
+  it 'zero (0) should be allowed' do
     author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
     subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
-    subject.CommentsCounter = nil
+    subject.CommentsCounter = 0
     expect(subject).to be_valid
   end
 
@@ -73,4 +73,12 @@ RSpec.describe Post, type: :model do
     subject.save
     expect(author.PostCounter).to eq(1)
   end
+
+  it 'returns true if Postcounter is not a numerical value' do
+    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
+    author.PostCounter = 'not_numeric'
+    author.save
+    expect(subject).to_not be_an_instance_of(Numeric)
+  end
+
 end

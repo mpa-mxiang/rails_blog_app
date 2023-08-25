@@ -14,8 +14,8 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it 'nil should be allowed' do
-    subject.PostCounter = nil
+  it 'zero (0) should be allowed' do
+    subject.PostCounter = 0
     expect(subject).to be_valid
   end
 
