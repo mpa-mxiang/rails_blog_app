@@ -6,13 +6,23 @@ class Post < ApplicationRecord
 
   # defining associations between the `Post`
   # model and the `Comment` and `Like` models, respectively.
-  has_many :comments
-  has_many :likes
+  has_many :comments, foreign_key: 'post_id'
+  has_many :likes, foreign_key: 'post_id'
+
+  
+  validates :Title, presence: true, length: { maximum: 250 }
+  validates :LikesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :CommentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
 
   after_save :update_user_posts_counter
 
-  private
+  def recent_comments
+    # List the five last comment on a post
+    Comment.where(post_id: id).order('created_at DESC').limit(5)
+  end
 
+  private
+  
   def update_user_posts_counter
     # updating the `posts_counter` attribute of
     # the associated `author` object with the count of the `posts` associated with that `author`.
@@ -23,8 +33,4 @@ class Post < ApplicationRecord
     # author.increment!(:PostsCounter)
   end
 
-  def recent_comments
-    # List the five last comment on a post
-    comments.order(created_at: :desc).limit(5)
-  end
 end
