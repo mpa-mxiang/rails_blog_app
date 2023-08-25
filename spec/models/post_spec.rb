@@ -74,11 +74,10 @@ RSpec.describe Post, type: :model do
     expect(author.PostCounter).to eq(1)
   end
 
-  it 'returns true if Postcounter is not a numerical value' do
+  it 'Postcounter is not a numerical value' do
     author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
     author.PostCounter = 'not_numeric'
     author.save
     expect(subject).to_not be_an_instance_of(Numeric)
   end
-
 end
