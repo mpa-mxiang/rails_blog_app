@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :author_id
   has_many :likes, foreign_key: :author_id
 
+  validates :Name, presence: true
+  validates :PostCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_nil: true
+
   def recent_posts(limit = 3)
     # retrieve the most recent posts for a user.
     posts.order(created_at: :desc).limit(limit)
@@ -14,6 +17,6 @@ class User < ApplicationRecord
     # updating the `posts_counter` attribute of the
     # `User` model with the count of the user's posts. This is useful for keeping track of the number
     # of posts a user has.
-    update(posts_counter: posts.count)
+    update(PostCounter: posts.count)
   end
 end
