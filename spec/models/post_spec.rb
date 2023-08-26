@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  # default values
+  author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.',
+                    PostCounter: 0)
+  subject { Post.new(author:, Title: 'Hello', Text: 'This is my first post', LikesCounter: 0, CommentsCounter: 0) }
   it 'Title must be present' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
     subject.Title = nil
     expect(subject).to_not be_valid
   end
 
   it 'Title must be less than 250 chars' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
     subject.Title = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus neque quis nulla facilisis
     consequat. Nulla urna enim, lacinia quis odio at, venenatis tempus ante. lectus lobortis. Donec auctor
     efficitur justo vitae iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
@@ -19,36 +19,26 @@ RSpec.describe Post, type: :model do
   end
 
   it 'user likes should not be negative' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
     subject.LikesCounter = -1
     expect(subject).to_not be_valid
   end
 
   it 'zero value should be allowed' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
     subject.LikesCounter = 0
     expect(subject).to be_valid
   end
 
   it 'user comments should not be negative' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
     subject.CommentsCounter = -1
     expect(subject).to_not be_valid
   end
 
   it 'zero (0) should be allowed' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
     subject.CommentsCounter = 0
     expect(subject).to be_valid
   end
 
   it 'recent comments should return the last 5' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
     author.save
     subject.save
     first_comment = Comment.new(post: subject, author:, Text: 'Hi Tom!')
@@ -67,17 +57,10 @@ RSpec.describe Post, type: :model do
   end
 
   it 'posts_counter of author should update' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    subject = Post.new(author:, Title: 'Hello', Text: 'This is my first post')
+    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher.', PostCounter: 0)
+    post = Post.new(author:, Title: 'Hello', Text: 'This is my first post', CommentsCounter: 0, LikesCounter: 0)
     author.save
-    subject.save
+    post.save
     expect(author.PostCounter).to eq(1)
-  end
-
-  it 'Postcounter is not a numerical value' do
-    author = User.new(Name: 'Tom', Photo: 'https://unsplash.com/photos/F_-0BxGuVvo', Bio: 'Teacher from Mexico.')
-    author.PostCounter = 'not_numeric'
-    author.save
-    expect(subject).to_not be_an_instance_of(Numeric)
   end
 end
