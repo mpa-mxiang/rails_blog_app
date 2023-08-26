@@ -6,12 +6,20 @@ class Post < ApplicationRecord
 
   # defining associations between the `Post`
   # model and the `Comment` and `Like` models, respectively.
-  has_many :comments
-  has_many :likes
+  has_many :comments, foreign_key: 'post_id'
+  has_many :likes, foreign_key: 'post_id'
+
+  # These lines of code are defining validations for the `Post` model.
+  validates :Title, presence: true, length: { maximum: 250 }
+  validates :LikesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :CommentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_save :update_user_posts_counter
 
-  private
+  def recent_comments
+    # List the five last comment on a post
+    Comment.where(post_id: id).order('created_at DESC').limit(5)
+  end
 
   def update_user_posts_counter
     # updating the `posts_counter` attribute of
@@ -20,11 +28,6 @@ class Post < ApplicationRecord
 
     # `author.increment!(:posts_counter)` is incrementing the value of the `posts_counter` attribute
     # of the associated `author` object by 1.
-    # author.increment!(:PostsCounter)
-  end
-
-  def recent_comments
-    # List the five last comment on a post
-    comments.order(created_at: :desc).limit(5)
+    # author.increment!(:PostCounter)
   end
 end
