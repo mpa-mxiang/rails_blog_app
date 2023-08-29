@@ -9,4 +9,14 @@ RSpec.describe 'Posts', type: :request do
       PostCounter: 5
     )
   end
+
+	let!(:post) do
+    Post.create(
+      Title: 'Ruby',
+      Text: 'Learn ruby',
+      Author_id: user,
+      CommentsCounter: 5,
+      LikesCounter: 10
+    )
+  end
 end
