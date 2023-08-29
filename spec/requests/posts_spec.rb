@@ -33,4 +33,18 @@ RSpec.describe 'Posts', type: :request do
       expect(response.body).to include('List of all posts')
     end
   end
+
+		describe 'GET /show' do
+    before do
+      get "/users/#{user.id}/posts/#{post.id}"
+    end
+
+    it 'returns success for detail post' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders post detail template' do
+      expect(response).to render_template(:index)
+    end
+  end
 end
