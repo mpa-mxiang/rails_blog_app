@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
   def index
     # Find a specific user based on the `id` parameter passed
     # in the request. It assigns the found user to the `@users` instance variable, which can then be

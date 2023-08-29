@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   def index
     # retrieving all the records from the `User` model and assigning them to the
     # `@users` instance variable. This allows the retrieved users to be accessed and used in the view.
