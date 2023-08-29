@@ -27,4 +27,30 @@ RSpec.describe 'Users', type: :request do
       expect(response.body).to include('All Users')
     end
   end
+
+  describe "User GET /show'" do
+    before do
+      get "/users/#{user.id}"
+    end
+
+    it 'returns success for detail user' do
+      expect(response).not_to have_http_status(400)
+    end
+
+    it 'returns success for detail user' do
+      expect(response).to have_http_status(200)
+    end
+
+    it 'renders user detail template' do
+      expect(response).to render_template(:show)
+    end
+
+    it 'renders user detail template' do
+      expect(response).not_to render_template(:index)
+    end
+
+    it 'user detail responsed body with correct place holder' do
+      expect(response.body).to include('Hello Users')
+    end
+  end
 end
