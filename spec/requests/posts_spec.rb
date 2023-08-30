@@ -36,7 +36,7 @@ RSpec.describe 'Posts', type: :request do
 
   describe 'GET /show' do
     before do
-      get "/users/10/posts/10"
+      get '/users/10/posts/10'
     end
 
     it 'returns success for detail post' do
