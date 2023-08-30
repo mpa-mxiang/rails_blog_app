@@ -46,5 +46,9 @@ RSpec.describe 'Posts', type: :request do
     it 'renders post detail template' do
       expect(response).to render_template(:index)
     end
+
+    it 'post detail response body includes correct placeholder text' do
+      expect(response.body).to include('Hey i am a post')
+    end
   end
 end
