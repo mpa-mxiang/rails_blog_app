@@ -1,3 +1,23 @@
 <div>
-  <h1>Hey i am a post</h1>
+  <div>
+    <h3><%= @post.Title || "no title"%></h3>
+    <h4><%= @post.Text || "no text"%></h4>
+  </div>
+
+  <div>
+    <span>Comments: <%= @post.CommentsCounter || 0 %></span>
+    <span>Likes: <%= @post.LikesCounter || 0 %> </span>
+  </div>
+
+  <div class="comments">
+    <h4>Comments:</h4>
+    <ul>
+      <% @post.recent_comments.each do |comment| %>
+        <li>
+          <p><%= comment.Text %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>
