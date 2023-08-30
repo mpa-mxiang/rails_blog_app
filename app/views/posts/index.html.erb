@@ -1,17 +1,37 @@
-<div>
-  <h1>List of all posts</h1>
-</div>
+<section>
+  <div class="user-show">
+    <div class="image-show">
+      <img src="<%= @user.Photo%>" alt="user picture">
+    </div>
+    <div class="name-post_counter">
+      <h1><%= @user.Name || "anonymous" %></h1>
+      <p>Number of posts: <%= @user.PostCounter || 0 %></p>
+    </div>
+    <div class="bio">
+      <h3>Bio:</h3>
+      <p><%= @user.Bio || "No biography"%></p>
+    </div>
+  </div>
+</section>
 
-<div>
-  <ul>
-    <li>
-      Hey i am a post 😉
-    </li>
-    <li>
-      wow... me too 🤗
-    </li>
-    <li>
-      we are all posts hey 😒
-    </li>
-  </ul>
-</div>
+<section>
+    <ul>
+      <% @posts.each do |post| %>
+        <%= link_to user_post_path(user_id: post.author_id, id: post.id) do %>
+          <li>
+            
+            <div>
+              <h3><%= post.Title || "no title"%></h3>
+              <h4><%= post.Text || "no text"%></h4>
+            </div>
+
+            <div>
+              <span>Comments: <%= post.CommentsCounter || 0 %></span>
+              <span>Likes: <%= post.LikesCounter || 0 %> </span>
+            </div>
+          </li>
+
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
