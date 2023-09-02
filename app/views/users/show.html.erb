@@ -1,39 +1,34 @@
-<section>
-  <div class="user-show">
-    <div class="image-show">
-      <img src="<%= @user.Photo%>" alt="user picture">
+<main>
+  <section>
+    <div class="card">
+      <div class="user-image border"></div>
+      <div class="user-data border">
+        <h1><%= @user.Name %></h1>
+        <p class="number-posts">Number of posts: <%= @user.PostCounter %></p>
+      </div>
     </div>
-    <div class="name-post_counter">
-      <h1><%= @user.Name || "anonymous" %></h1>
-      <p>Number of posts: <%= @user.PostCounter || 0 %></p>
+    <div class="card">
+      <div class="column">
+        <h3>Bio:</h3>
+        <p><%= @user.Bio %></p>
+      </div>
     </div>
-    <div class="bio">
-      <h3>Bio:</h3>
-      <p><%= @user.Bio || "No biography"%></p>
-    </div>
-  </div>
-</section>
-<section class="posts">
+  </section>
+  <section class="center">
     <ul>
       <% @user.recent_posts.each do |post| %>
         <%= link_to user_posts_path(@user) do %>
-
-          <li class="">
-
-            <div>
-              <h3><%= post.Title || "no title"%></h3>
-              <h4><%= post.Text || "no text"%></h4>
+          <li class="card column hover">
+            <h3 class="left"><%= post.Title%></h3>
+            <h4 class="left"><%= post.Text%></h4>
+            <div class="right">
+              <span>Comments: <%= post.CommentsCounter %></span>
+              <span class="left">Likes: <%= post.LikesCounter %> </span>
             </div>
-
-            <div>
-              <span>Comments: <%= post.CommentsCounter || 0 %></span>
-              <span>Likes: <%= post.LikesCounter || 0 %> </span>
-            </div>
-
           </li>
-
         <% end %>
       <% end %>
     </ul>
-    <%= link_to "latest posts", user_posts_path(user_id: @user.id)%>
-  </section>
+    <%= link_to "See all posts", user_posts_path(user_id: @user.id), class: "btn" %>
+  </section> 
+</main>

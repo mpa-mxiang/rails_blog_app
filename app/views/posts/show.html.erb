@@ -1,23 +1,17 @@
-<div>
-  <div>
-    <h3><%= @post.Title || "no title"%></h3>
-    <h4><%= @post.Text || "no text"%></h4>
-  </div>
-
-  <div>
-    <span>Comments: <%= @post.CommentsCounter || 0 %></span>
-    <span>Likes: <%= @post.LikesCounter || 0 %> </span>
-  </div>
-
-  <div class="comments">
-    <h4>Comments:</h4>
-    <ul>
-      <% @post.recent_comments.each do |comment| %>
-        <li>
+<main>
+  <section class="card column">
+    <div class="card column">
+      <h2><%= @post.Title %></h2>
+      <p><%= @post.Text %></p>
+      <span>Likes: <%= @post.LikesCounter %> </span>
+    </div>
+    <div class="commets-container">
+      <h4>Comments:</h4>
+      <ul>
+        <% @post.recent_comments.each do |comment| %>
           <p><%= comment.Text %></p>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-</div>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</main>

@@ -1,15 +1,13 @@
 <main>
   <section>
-    <ul class="user-list">
+    <ul>
       <% @users.each do |user|%>
         <%= link_to user do %>
-          <li class="user">
-            <div class="image">
-              <img src="<%= user.Photo%>" alt="user picture">
-            </div>
-            <div class="name-post_counter">
-              <h1><%= user.Name || "anonymous" %></h1>
-              <p>Number of posts: <%= user.PostCounter || 0 %></p>
+          <li class="card hover">
+            <div class="user-image border"></div>
+            <div class="user-data border">
+              <h1><%= user.Name %></h1>
+              <p class="number-posts">Number of posts: <%= user.PostCounter %></p>
             </div>
           </li>
         <% end %>
