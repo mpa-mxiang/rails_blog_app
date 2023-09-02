@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     # in the request. It assigns the found user to the `@users` instance variable, which can then be
     # used in the view to display the details of the user.
     @users = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
 
     @posts = @users.posts
   end
@@ -12,5 +13,6 @@ class PostsController < ApplicationController
     # Find a specific post based on the `id` parameter passed
     # in the request. It assigns the found post to the `@posts` instance variable, which can then be
     # used in the view to display the details of the post.
+    @post = Post.find(params[:id])
   end
 end
