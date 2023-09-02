@@ -20,6 +20,9 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  ##
+  # creates a new post associated with a user and redirects to the user's page
+  # if successful, or renders the new post form with an error message if unsuccessful.
   def create
     @author = User.find(params[:user_id])
     @post = @author.posts.new(post_params)
