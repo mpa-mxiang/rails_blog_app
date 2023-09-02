@@ -1,15 +1,15 @@
 <main>
   <section class="card column">
     <div class="card column">
-      <h2><%= @post.Title %></h2>
-      <p><%= @post.Text %></p>
-      <span>Likes: <%= @post.LikesCounter %> </span>
+      <h2><%= @post.title %></h2>
+      <p><%= @post.text %></p>
+      <span>Likes: <%= @post.likes_counter %> </span>
     </div>
     <div class="commets-container">
       <h4>Comments:</h4>
       <ul>
         <% @post.recent_comments.each do |comment| %>
-          <p><%= comment.Text %></p>
+          <p><%= comment.text %></p>
         <% end %>
       </ul>
     </div>

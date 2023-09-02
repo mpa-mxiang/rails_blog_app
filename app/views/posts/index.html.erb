@@ -1,10 +1,12 @@
 <main>
   <section>
     <div class="card">
-      <div class="user-image border"></div>
+      <div class="user-image border">
+        <%= image_tag(user.photo, class: "add-css-class") %>
+      </div>
       <div class="user-data border">
         <h1><%= @user.Name %></h1>
-        <p class="number-posts">Number of posts: <%= @user.PostCounter %></p>
+        <p class="number-posts">Number of posts: <%= @user.post_counter %></p>
       </div>
     </div>
   </section>
@@ -14,18 +16,18 @@
         <%= link_to user_post_path(user_id: post.author_id, id: post.id) do %>
           <li class="card hover column">
             <div class="card column">
-              <h2><%= post.Title %></h2>
-              <p><%= post.Text %></p>
+              <h2><%= post.title %></h2>
+              <p><%= post.text %></p>
               <div class="right">
-                <span>Comments: <%= post.CommentsCounter %></span>
-                <span>Likes: <%= post.LikesCounter %> </span>
+                <span>Comments: <%= post.comments_counter %></span>
+                <span>Likes: <%= post.likes_counter %> </span>
               </div>
             </div>
             <div class="commets-container">
               <h4>Comments:</h4>
               <ul>
                 <% post.recent_comments.each do |comment| %>
-                  <p><%= comment.author.Name %>: <%= comment.Text %></p>
+                  <p><%= comment.author.name %>: <%= comment.text %></p>
                 <% end %>
               </ul>
             </div>
