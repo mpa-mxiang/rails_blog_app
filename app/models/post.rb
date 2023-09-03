@@ -10,9 +10,9 @@ class Post < ApplicationRecord
   has_many :likes, foreign_key: 'post_id'
 
   # These lines of code are defining validations for the `Post` model.
-  validates :Title, presence: true, length: { maximum: 250 }
-  validates :LikesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :CommentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :title, presence: true, length: { maximum: 250 }
+  validates :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :comments_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_save :update_user_posts_counter
 
@@ -24,7 +24,7 @@ class Post < ApplicationRecord
   def update_user_posts_counter
     # updating the `posts_counter` attribute of
     # the associated `author` object with the count of the `posts` associated with that `author`.
-    author.update(PostCounter: author.posts.count)
+    author.update(post_counter: author.posts.count)
 
     # `author.increment!(:posts_counter)` is incrementing the value of the `posts_counter` attribute
     # of the associated `author` object by 1.
