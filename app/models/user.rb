@@ -7,9 +7,9 @@ class User < ApplicationRecord
 
   # validating that the `Name` attribute of the `User`
   # model is present, meaning it cannot be blank or nil.
-  validates :Name, presence: true
+  validates :name, presence: true
 
-  validates :PostCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :post_ounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def recent_posts(limit = 3)
     # retrieve the most recent posts for a user.
@@ -20,6 +20,6 @@ class User < ApplicationRecord
     # updating the `posts_counter` attribute of the
     # `User` model with the count of the user's posts. This is useful for keeping track of the number
     # of posts a user has.
-    update(PostCounter: posts.count)
+    update(post_ounter: posts.count)
   end
 end
