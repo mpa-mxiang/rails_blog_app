@@ -9,7 +9,7 @@ class User < ApplicationRecord
   # model is present, meaning it cannot be blank or nil.
   validates :name, presence: true
 
-  validates :post_ounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :post_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def recent_posts(limit = 3)
     # retrieve the most recent posts for a user.
