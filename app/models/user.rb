@@ -20,6 +20,6 @@ class User < ApplicationRecord
     # updating the `posts_counter` attribute of the
     # `User` model with the count of the user's posts. This is useful for keeping track of the number
     # of posts a user has.
-    update(post_ounter: posts.count)
+    update(post_counter: posts.count)
   end
 end
