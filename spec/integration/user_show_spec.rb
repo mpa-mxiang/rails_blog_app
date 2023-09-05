@@ -45,7 +45,6 @@ RSpec.feature 'User Profile', type: :feature do
     expect(page).to have_link('See all posts', href: user_posts_path(user_id: @user.id))
   end
 
-
   scenario "When I click to see all posts, it redirects me to the user's post's index page" do
     visit user_path(@user)
     click_link('See all posts')
