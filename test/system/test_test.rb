@@ -3,7 +3,8 @@ require 'test_helper'
 RSpec.feature 'Inicio de Sesión', type: :feature do
   scenario 'Usuario inicia sesión con éxito' do
     # Crear un usuario de ejemplo en la base de datos
-    user = User.create(email: 'usuario@example.com', password: 'password123')
+    User.create(email: 'usuario@example.com', password: 'password123')
+    User.create(email: 'usuario@example.com', password: 'password123')
 
     # Visitar la página de inicio de sesión
     visit new_user_session_path
