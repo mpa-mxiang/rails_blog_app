@@ -68,8 +68,10 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -234,11 +236,6 @@ GEM
     tzinfo-data (1.2023.3)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.4.2)
-    web-console (4.2.0)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     webdrivers (5.3.1)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
@@ -255,6 +252,8 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  activesupport (= 7.0.7)
+  annotate (~> 3.2)
   bootsnap
   capybara
   debug
@@ -271,7 +270,6 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
-  web-console
   webdrivers
 
 RUBY VERSION
