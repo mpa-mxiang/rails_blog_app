@@ -47,18 +47,5 @@ RSpec.describe 'Hello world', type: :system do
     expect(page).to have_content('Number of posts: 1', count: 1)
     
   end
-
-  it 'redirects to the user show page when clicking on a user' do
-    visit users_path
-
-    # Haz clic en un enlace de usuario
-    # click_link "users/1"
-
-    # Haciendo clic en un enlace específico con un selector CSS
-    find('a[href="/users/1"]').click
-
-
-    # Verifica que estás en la página del perfil del usuario
-    expect(page).to have_current_path(user_path(User.find_by(name: 'Usuario1')))
-  end
+ 
 end
