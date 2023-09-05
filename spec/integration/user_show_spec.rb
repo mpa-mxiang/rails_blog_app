@@ -1,20 +1,16 @@
 require 'rails_helper'
 
-RSpec.feature "User Profile", type: :feature do
+RSpec.feature 'User Profile', type: :feature do
   before(:each) do
-    
     # Crear un usuario y sus publicaciones en la base de datos
-    @user = User.create(name: "John Doe", photo: "https://picsum.photos/id/237/200/300", bio: "User bio", post_counter: 0)
-    @post1 =  Post.create(title: 'My First Post', text: 'This is my first post', author: @user, comments_counter: 0,
-      likes_counter: 0)
-    @post2 =  Post.create(title: 'My second Post', text: 'This is my second post', author: @user, comments_counter: 0,
-      likes_counter: 0)
-    @post3 =  Post.create(title: 'My third Post', text: 'This is my third post', author: @user, comments_counter: 0,
-      likes_counter: 0)
-
-    
-
-    
+    @user = User.create(name: 'John Doe', photo: 'https://picsum.photos/id/237/200/300', bio: 'User bio',
+                        post_counter: 0)
+    @post1 = Post.create(title: 'My First Post', text: 'This is my first post', author: @user, comments_counter: 0,
+                         likes_counter: 0)
+    @post2 = Post.create(title: 'My second Post', text: 'This is my second post', author: @user, comments_counter: 0,
+                         likes_counter: 0)
+    @post3 = Post.create(title: 'My third Post', text: 'This is my third post', author: @user, comments_counter: 0,
+                         likes_counter: 0)
   end
 
   scenario "I can see the user's profile picture" do
@@ -27,7 +23,7 @@ RSpec.feature "User Profile", type: :feature do
     expect(page).to have_content('John Doe')
   end
 
-  scenario "I can see the number of posts the user has written" do
+  scenario 'I can see the number of posts the user has written' do
     visit user_path(@user)
     expect(page).to have_content('Number of posts: ')
   end

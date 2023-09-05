@@ -6,8 +6,6 @@ class Comment < ApplicationRecord
   after_create :update_comments_counter
   after_destroy :update_comments_counter
 
-  
-
   def update_comments_counter
     # updating the `CommentsCounter` attribute
     # of the associated `post` object with the count of comments that belong to that post. It is using
