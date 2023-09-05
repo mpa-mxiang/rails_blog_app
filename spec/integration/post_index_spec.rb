@@ -4,21 +4,19 @@ require 'rails_helper'
 
 RSpec.describe 'User post index page', type: :feature do
   before(:each) do
-    
     # Crear un usuario y sus publicaciones en la base de datos
-    @user = User.create(name: "John Doe", photo: "https://picsum.photos/id/237/200/300", bio: "User bio", post_counter: 0)
-    @post1 =  Post.create(title: 'My First Post', text: 'This is my first post', author: @user, comments_counter: 0,
-      likes_counter: 0)
-    @post2 =  Post.create(title: 'My second Post', text: 'This is my second post', author: @user, comments_counter: 0,
-      likes_counter: 0)
-    @post3 =  Post.create(title: 'My third Post', text: 'This is my third post', author: @user, comments_counter: 0,
-      likes_counter: 0)
-    
-    @comment1 = Comment.create(author: @user, post: @post1, text: "some random comment")
-    @comment2 = Comment.create(author: @user, post: @post1, text: "some random comment")
-    @comment3 = Comment.create(author: @user, post: @post1, text: "some random comment")
-    
-    
+    @user = User.create(name: 'John Doe', photo: 'https://picsum.photos/id/237/200/300', bio: 'User bio',
+                        post_counter: 0)
+    @post1 = Post.create(title: 'My First Post', text: 'This is my first post', author: @user, comments_counter: 0,
+                         likes_counter: 0)
+    @post2 = Post.create(title: 'My second Post', text: 'This is my second post', author: @user, comments_counter: 0,
+                         likes_counter: 0)
+    @post3 = Post.create(title: 'My third Post', text: 'This is my third post', author: @user, comments_counter: 0,
+                         likes_counter: 0)
+
+    @comment1 = Comment.create(author: @user, post: @post1, text: 'some random comment')
+    @comment2 = Comment.create(author: @user, post: @post1, text: 'some random comment')
+    @comment3 = Comment.create(author: @user, post: @post1, text: 'some random comment')
   end
 
   it 'I can see the user\'s profile picture' do
@@ -47,8 +45,8 @@ RSpec.describe 'User post index page', type: :feature do
   end
 
   it 'I can see the first comments on a post' do
-    visit user_posts_path(@user)    
-    expect(page).to have_content(@user.posts.first.comments.first.text)    
+    visit user_posts_path(@user)
+    expect(page).to have_content(@user.posts.first.comments.first.text)
   end
 
   it 'I can see how many comments a post has' do
@@ -61,11 +59,10 @@ RSpec.describe 'User post index page', type: :feature do
     expect(page).to have_content("Likes: #{@user.posts.first.likes_counter}")
   end
 
-  it 'I can see a section for pagination if there are more posts than fit on the view' do    
-
-    10.times do 
+  it 'I can see a section for pagination if there are more posts than fit on the view' do
+    10.times do
       Post.create(title: 'My third Post', text: 'This is my third post', author: @user, comments_counter: 0,
-        likes_counter: 0)
+                  likes_counter: 0)
     end
 
     visit user_posts_path(@user)

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Hello world', type: :system do
-
   before do
     driven_by(:rack_test)
   end
@@ -21,7 +20,7 @@ RSpec.describe 'Hello world', type: :system do
     Comment.create(text: 'This is my first comment', author: user, post:)
   end
 
-    it 'shows the username of all other users' do
+  it 'shows the username of all other users' do
     visit users_path
 
     # Verifica que los nombres de los usuarios se muestren en la página
@@ -45,7 +44,5 @@ RSpec.describe 'Hello world', type: :system do
     # Verifica que el número de posts de los usuarios se muestre en la página
     expect(page).to have_content('Number of posts: 5', count: 2)
     expect(page).to have_content('Number of posts: 1', count: 1)
-    
   end
- 
 end
